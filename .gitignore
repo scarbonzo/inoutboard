@@ -2,3 +2,8 @@
 /api-inoutboard/obj/Container
 /api-inoutboard/bin/Debug/net7.0
 /api-inoutboard/Configuration.cs
+/node_modules/@popperjs/core
+/node_modules/bootstrap-icons
+/node_modules/bootstrap/dist/css
+/node_modules/bootstrap/scss/vendor
+/node_modules
