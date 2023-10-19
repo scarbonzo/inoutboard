@@ -1332,25 +1332,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\reodice\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "C:\\Users\\rich\\.nuget\\packages\\": {},
+    "E:\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\vs\\inoutboard\\api-inoutboard\\api-inoutboard.csproj",
+      "projectUniqueName": "E:\\Code\\inoutboard\\api-inoutboard\\api-inoutboard.csproj",
       "projectName": "api-inoutboard",
-      "projectPath": "E:\\vs\\inoutboard\\api-inoutboard\\api-inoutboard.csproj",
-      "packagesPath": "C:\\Users\\reodice\\.nuget\\packages\\",
-      "outputPath": "E:\\vs\\inoutboard\\api-inoutboard\\obj\\",
+      "projectPath": "E:\\Code\\inoutboard\\api-inoutboard\\api-inoutboard.csproj",
+      "packagesPath": "C:\\Users\\rich\\.nuget\\packages\\",
+      "outputPath": "E:\\Code\\inoutboard\\api-inoutboard\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        "E:\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\reodice\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\rich\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -1360,7 +1358,6 @@
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "C:\\Program Files\\dotnet\\library-packs": {},
-        "http://nuget.lsnj.org/nuget": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -1419,16 +1416,8 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.400\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.401\\RuntimeIdentifierGraph.json"
       }
     }
-  },
-  "logs": [
-    {
-      "code": "NU1803",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "You are running the 'restore' operation with an 'HTTP' source, 'http://nuget.lsnj.org/nuget'. Non-HTTPS access will be removed in a future version. Consider migrating to an 'HTTPS' source."
-    }
-  ]
+  }
 }
