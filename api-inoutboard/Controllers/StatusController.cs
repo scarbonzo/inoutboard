@@ -1,16 +1,14 @@
 ﻿using api_inoutboard.models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Configuration;
 using MongoDB.Driver;
-using System.Reflection.Metadata.Ecma335;
 
 namespace api_inoutboard.Controllers
 {
     [ApiController]
-    public class UserController : ControllerBase
+    public class StatusController : ControllerBase
     {
-        [Route("api/users/seed")]
+        [Route("api/statuses/seed")]
         [HttpGet]
         public ActionResult Seed()
         {
@@ -18,14 +16,20 @@ namespace api_inoutboard.Controllers
             {
                 var dbClient = new MongoClient(Configuration.dbconnection);
                 var database = dbClient.GetDatabase(Configuration.dbname);
-                var collection = database.GetCollection<User>(Configuration.userscollection);
+                var collection = database.GetCollection<Status>(Configuration.statusescollection);
 
-                List<User> users = new List<User>
+                List<Status> statuses = new List<Status>
                 {
-                    new User("REodice", "Rich Eodice", 406600, "reodice@lsnj.org", true)
+                    new Status("Office", true),
+                    new Status("WFH", true),
+                    new Status("Out", true),
+                    new Status("Vacation", true),
+                    new Status("Holiday", true),
+                    new Status("Training", true),
+                    new Status("Offsite", true)
                 };
 
-                collection.InsertMany(users);
+                collection.InsertMany(statuses);
 
                 var results = collection.AsQueryable()
                 .ToList();
@@ -38,18 +42,18 @@ namespace api_inoutboard.Controllers
             }
         }
 
-        [Route("api/users")]
+        [Route("api/statuses")]
         [HttpGet]
-        public ActionResult GetAll()
+        public ActionResult GetAllActive()
         {
             try
             {
                 var dbClient = new MongoClient(Configuration.dbconnection);
                 var database = dbClient.GetDatabase(Configuration.dbname);
-                var collection = database.GetCollection<User>(Configuration.userscollection);
+                var collection = database.GetCollection<Status>(Configuration.statusescollection);
 
                 var results = collection.AsQueryable()
-                    .Where(u => u.Active)
+                    .Where(s => s.Active)
                     .ToList();
 
                 return Ok(results);

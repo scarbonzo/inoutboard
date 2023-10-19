@@ -1,16 +1,14 @@
 ﻿using api_inoutboard.models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Configuration;
 using MongoDB.Driver;
-using System.Reflection.Metadata.Ecma335;
 
 namespace api_inoutboard.Controllers
 {
     [ApiController]
-    public class UserController : ControllerBase
+    public class GroupController : ControllerBase
     {
-        [Route("api/users/seed")]
+        [Route("api/groups/seed")]
         [HttpGet]
         public ActionResult Seed()
         {
@@ -18,14 +16,18 @@ namespace api_inoutboard.Controllers
             {
                 var dbClient = new MongoClient(Configuration.dbconnection);
                 var database = dbClient.GetDatabase(Configuration.dbname);
-                var collection = database.GetCollection<User>(Configuration.userscollection);
+                var collection = database.GetCollection<Group>(Configuration.groupscollection);
 
-                List<User> users = new List<User>
+                List<Group> groups = new List<Group>
                 {
-                    new User("REodice", "Rich Eodice", 406600, "reodice@lsnj.org", true)
+                    new Group("Management", true),
+                    new Group("Core", true),
+                    new Group("Helpdesk", true),
+                    new Group("Web", true),
+                    new Group("Multi", true)
                 };
 
-                collection.InsertMany(users);
+                collection.InsertMany(groups);
 
                 var results = collection.AsQueryable()
                 .ToList();
@@ -38,18 +40,18 @@ namespace api_inoutboard.Controllers
             }
         }
 
-        [Route("api/users")]
+        [Route("api/groups")]
         [HttpGet]
-        public ActionResult GetAll()
+        public ActionResult GetAllActive()
         {
             try
             {
                 var dbClient = new MongoClient(Configuration.dbconnection);
                 var database = dbClient.GetDatabase(Configuration.dbname);
-                var collection = database.GetCollection<User>(Configuration.userscollection);
+                var collection = database.GetCollection<Group>(Configuration.groupscollection);
 
                 var results = collection.AsQueryable()
-                    .Where(u => u.Active)
+                    .Where(g => g.Active)
                     .ToList();
 
                 return Ok(results);
